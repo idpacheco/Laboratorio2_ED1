@@ -1,3 +1,7 @@
+package Main;
+import Logica.Procesos;
+import Structures.CircularSimpleList;
+import Structures.SimpleDoubleLinkedList;
 public class Main {
     public static void main(String[] args) {
         Procesos proc = new Procesos();
@@ -25,6 +29,5 @@ public class Main {
         proc.mixingList(PTR1, PTR2);
         System.out.println("Lista doblemente enlazada simple después de mezclar:");
         PTR1.traversalRight();
-    }
 }
-
+}

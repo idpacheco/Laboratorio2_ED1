@@ -1,14 +1,14 @@
-
+package Structures;
 public class CircularSimpleList extends List {
 
     @Override
-    void addStack(int theData) {
+    public void addStack(int theData) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'addStack'");
     }
 
     @Override
-    void addQueue(int theData) {
+    public void addQueue(int theData) {
         Node newNode = new Node(theData);
         if (first == null) {
             first = newNode;
@@ -22,7 +22,7 @@ public class CircularSimpleList extends List {
     }
 
     @Override
-    void traversal() {
+    public void traversal() {
         if (first == null)
             System.out.println("Empty list");
         else {
@@ -37,13 +37,13 @@ public class CircularSimpleList extends List {
     }
 
     @Override
-    Node search(int theData) {
+    public Node search(int theData) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'search'");
     }
 
     @Override
-    void delete(int theData) {
+    public void delete(int theData) {
         if (first == first.next && first.data == theData) {
             first = null;
             last = null;

@@ -1,7 +1,8 @@
+package Structures;
 
 public class Node {
-    int data;
-    Node next;
+    public int data;
+    public Node next;
 
     public Node(int theData) {
         this.data = theData;

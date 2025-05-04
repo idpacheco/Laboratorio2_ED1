@@ -1,3 +1,4 @@
+package Structures;
 
 public class DoubleNode {
     private int data;
