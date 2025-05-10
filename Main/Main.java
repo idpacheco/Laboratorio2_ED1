@@ -1,10 +1,11 @@
 package Main;
 import Logica.Procesos;
-import Structures.CircularSimpleList;
-import Structures.Node;
+import static Logica.Procesos.esBalanceada;
+import static Logica.Procesos.imprimirLista;
 import static Logica.Procesos.insertarNodo;
 import static Logica.Procesos.potenciaMatriz;
-import static Logica.Procesos.imprimirLista;
+import Structures.CircularSimpleList;
+import Structures.Node;
 import Structures.SimpleDoubleLinkedList;
 public class Main {
     public static void main(String[] args) {
@@ -48,5 +49,13 @@ public class Main {
         proc.mixingList(PTR1, PTR2);
         System.out.println("Lista doblemente enlazada simple después de mezclar:");
         PTR1.traversalRight();
+
+        //Enunciado 3
+       String expresion = "(((()))"; 
+         if (esBalanceada(expresion)) {
+            System.out.println("La expresión está BALANCEADA");
+        } else {
+            System.out.println("La expresión NO está balanceada");
+    }
 }
 }

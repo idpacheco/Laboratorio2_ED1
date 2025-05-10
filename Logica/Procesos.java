@@ -2,6 +2,7 @@ package Logica;
 import Structures.CircularSimpleList;
 import Structures.DoubleNode;
 import Structures.Node;
+import Structures.Pila;
 import Structures.SimpleDoubleLinkedList;
 
 public class Procesos {
@@ -153,17 +154,52 @@ public void mixingList (SimpleDoubleLinkedList PTR1, CircularSimpleList PTR2) {
     }
     PTR2 = null; // Liberar la memoria de la lista circular
 }
+// Enunciado 3
+/* * Este programa verifica si una expresión tiene correctamente balanceados los siguientes símbolos:
+ * paréntesis (), corchetes [] y llaves {}.
+ *
+ * Reglas:
+ * - Cada símbolo de apertura debe tener su símbolo de cierre correspondiente.
+ * - El orden de los símbolos debe ser correcto; por ejemplo, la expresión [(]) no es válida.
+ * - Si hay símbolos de cierre sin haber uno de apertura correspondiente antes, la expresión es inválida.
+ *
+ * El programa debe:
+ * - Recorrer la cadena ingresada.
+ * - Usar una estructura de datos tipo pila (stack) para realizar la verificación.
+ * - Mostrar un mensaje indicando si la expresión está "balanceada" o "no balanceada".
+ */ 
+ public static boolean esBalanceada(String expresion) {
+         int tam = expresion.length();
+        Pila.pila = new char[tam]; 
+        Pila.tope = -1; 
+
+        for (int i = 0; i < expresion.length(); i++) {
+            char simbolo = expresion.charAt(i);
+
+            if (simbolo == '(' || simbolo == '[' || simbolo == '{') {
+                Pila.inPila( tam, simbolo);
+            } else if (simbolo == ')' || simbolo == ']' || simbolo == '}') {
+                Character elem = Pila.outPila(tam);  
+
+                if (elem == null) {
+                    return false;
+                }
+
+                if ((simbolo == ')' && elem != '(') ||
+                    (simbolo == ']' && elem != '[') ||
+                    (simbolo == '}' && elem != '{')) {
+                    return false;
+                }
+            }
+        }
+        if (Pila.tope == -1) {
+            return true; // La pila está vacía, la expresión está balanceada
+        } else {
+            return false; // Quedan símbolos de apertura sin cerrar
+        }
+
+    }
+
+
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
