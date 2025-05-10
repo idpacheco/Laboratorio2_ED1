@@ -1,10 +1,29 @@
 package Main;
 import Logica.Procesos;
 import Structures.CircularSimpleList;
+import Structures.Node;
+import static Logica.Procesos.insertarNodo;
+import static Logica.Procesos.potenciaMatriz;
+import static Logica.Procesos.imprimirLista;
 import Structures.SimpleDoubleLinkedList;
 public class Main {
     public static void main(String[] args) {
         Procesos proc = new Procesos();
+        // Enunciado 1
+        // (0, 0, 1) -> (0, 1, 2) -> (1, 1, 3) -> (2, 2, 4)
+        Node matriz = null;
+        matriz = insertarNodo(matriz, 0, 0, 1);
+        matriz = insertarNodo(matriz, 0, 1, 2);
+        matriz = insertarNodo(matriz, 1, 1, 3);
+        matriz = insertarNodo(matriz, 2, 2, 4);
+
+        int potencia = 3; // Potencia a la que se elevará la matriz
+        int tamaño = 3;
+
+        Node resultado = potenciaMatriz(matriz, potencia, tamaño);
+        System.out.println("Matriz elevada a la potencia " + potencia + ":");
+        imprimirLista(resultado);
+
         // Enunciado 2
         // Lista doblemente enlazada SIMPLE
         System.out.println("Lista doblemente enlazada simple");

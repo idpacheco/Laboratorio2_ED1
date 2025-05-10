@@ -5,6 +5,77 @@ import Structures.Node;
 import Structures.SimpleDoubleLinkedList;
 
 public class Procesos {
+    // Enunciado 1
+    // Metodo para multiplicar dos matrices dispersas representadas como listas enlazadas
+    public static Node multiplicar(Node A, Node B, int n) {
+        Node resultado = null;
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                int suma = 0;
+                for (int k = 0; k < n; k++) {
+                    int valA = obtenerValor(A, i, k);
+                    int valB = obtenerValor(B, k, j);
+                    suma += valA * valB;
+                }
+                if (suma != 0) {
+                    resultado = insertarNodo(resultado, i, j, suma);
+                }
+            }
+        }
+
+        return resultado;
+    }
+    // Obtiene el valor en una posición específica (i, j) de la lista
+    public static int obtenerValor(Node cabeza, int i, int j) {
+        Node actual = cabeza;
+        while (actual != null) {
+            if (actual.fila == i && actual.columna == j) {
+                return actual.valor;
+            }
+            actual = actual.next;
+        }
+        return 0;
+    }
+    //Inserta un nodo en la lista enlazada al final
+    public static Node insertarNodo(Node cabeza, int fila, int columna, int valor) {
+        Node nuevo = new Node(fila, columna, valor);
+        if (cabeza == null) return nuevo;
+
+        Node actual = cabeza;
+        while (actual.next != null) {
+            actual = actual.next;
+        }
+        actual.next = nuevo;
+        return cabeza;
+    }
+    // Calcula A^potencia usando multiplicación repetida
+    public static Node potenciaMatriz(Node A, int potencia, int n) {
+        if (potencia == 1) return copiarLista(A);
+        Node resultado = copiarLista(A);
+        for (int i = 1; i < potencia; i++) {
+            resultado = multiplicar(resultado, A, n);
+        }
+        return resultado;
+    }
+
+    // Copia la lista enlazada
+    public static Node copiarLista(Node original) {
+        if (original == null) return null;
+        Node nuevo = new Node(original.fila, original.columna, original.valor);
+        nuevo.next = copiarLista(original.next);
+        return nuevo;
+    }
+
+    // Imprime la lista enlazada
+    public static void imprimirLista(Node cabeza) {
+        Node actual = cabeza;
+        while (actual != null) {
+            System.out.println("(" + actual.fila + ", " + actual.columna + ", " + actual.valor + ")");
+            actual = actual.next;
+        }
+    }
+
     // Enunciado 2
     // Método para agregar un nodo a la lista doblemente enlazada en orden
     public void addOrder(DoubleNode X, SimpleDoubleLinkedList list) {
